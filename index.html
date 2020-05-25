@@ -6,9 +6,40 @@
 </head>
 <body>
     <h1>Time anything with this innovative little tool</h1>
-
+    <div class="stopwatch">
+        <div class="display">
+            <h1 class="digits"></h1>
+            <button class="start">Start</button>
+            <button class="stop">Stop</button>
+            <button class="reset">Reset</button>
+        </div>
+    </div>
 <script>
+    const digits = document.querySelector('.digits');
+    const startBtn = document.querySelector('.start');
+    const stopBtn = document.querySelector('.stop');
+    const resetBtn = document.querySelector('.reset');
+    digits.textContent = 0;
 
+    function clock() {
+        const startClock = setInterval(() => {
+            digits.textContent++;
+        }, 1000)
+
+        function stopClock() {
+            clearInterval(startClock);
+        }
+
+        function reset() {
+            digits.textContent = 0;
+            clearInterval(startClock);
+        };
+
+        resetBtn.addEventListener('click', reset);
+        stopBtn.addEventListener('click', stopClock);
+    }
+
+    startBtn.addEventListener('click', clock);
 </script>
 </body>
 </html>
